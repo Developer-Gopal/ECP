@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const admin = require("firebase-admin");
 const { PrismaClient } = require("@prisma/client");
-const serviceAccount = require("./serviceAccountKey.json");
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
 
 dotenv.config();
 
@@ -18,8 +19,9 @@ app.use(express.json());
 // ---------------- Firebase Setup ----------------
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://ecp-database-e772a-default-rtdb.asia-southeast1.firebasedatabase.app",
+  databaseURL: process.env.FIREBASE_DB_URL,
 });
+
 
 const db = admin.database();
 
