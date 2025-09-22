@@ -17,8 +17,6 @@ app.use(cors());
 app.use(express.json());
 
 // ---------------- Firebase Setup ----------------
-const admin = require("firebase-admin");
-
 admin.initializeApp({
   credential: admin.credential.cert({
     type: process.env.FIREBASE_TYPE,
