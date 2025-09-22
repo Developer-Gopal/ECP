@@ -6,8 +6,6 @@ const crypto = require("crypto");
 const admin = require("firebase-admin");
 const { PrismaClient } = require("@prisma/client");
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-
 dotenv.config();
 
 const app = express();
@@ -33,6 +31,7 @@ admin.initializeApp({
   }),
   databaseURL: process.env.FIREBASE_DB_URL,
 });
+
 
 
 
